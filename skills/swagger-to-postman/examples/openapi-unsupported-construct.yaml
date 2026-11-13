@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Example Advanced API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid
+paths:
+  /events:
+    post:
+      operationId: createEvent
+      x-company-workflow: dispatch-to-queue
+      callbacks:
+        onEvent:
+          '{$request.body#/callbackUrl}':
+            post:
+              responses:
+                '200':
+                  description: Callback received
+      responses:
+        '202':
+          description: Event accepted

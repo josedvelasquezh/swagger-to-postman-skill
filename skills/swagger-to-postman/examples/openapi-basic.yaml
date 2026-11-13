@@ -1,0 +1,21 @@
+openapi: 3.0.3
+info:
+  title: Example Catalog API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid/v1
+tags:
+  - name: Catalog
+paths:
+  /items:
+    get:
+      operationId: listItems
+      summary: List items
+      tags: [Catalog]
+      responses:
+        '200':
+          description: Items returned
+          content:
+            application/json:
+              example:
+                items: []

@@ -111,27 +111,17 @@ Each response node is either an independently executable request scenario or a d
 
 ```text
 swagger-to-postman-skill/
-├── SKILL.md                    # Main instructions and workflow
+├── skills/
+│   └── swagger-to-postman/     # Installable Agent Skill directory (matches SKILL.md name)
+│       ├── SKILL.md            # Main instructions and workflow
+│       ├── docs/
+│       ├── examples/
+│       ├── references/
+│       ├── scripts/
+│       └── tests/
 ├── README.md                   # English user-facing overview, install/use, examples
 ├── LICENSE                     # MIT license
-├── CHANGELOG.md                # User-visible changes by release
-├── docs/
-│   ├── WORKFLOW.md             # Detailed behavior and decision rules
-│   ├── SUPPORTED_FEATURES.md   # Compatibility matrix and known limitations
-│   └── EXAMPLES.md              # Input, preview, collection and validation examples
-├── references/
-│   ├── collection-structure.md # Postman collection conventions used by the skill
-│   └── scenario-model.md       # Executable scenarios vs response examples
-├── scripts/
-│   └── validate_collection.py  # Local structural validation; no network calls
-├── examples/
-│   ├── openapi-basic.yaml
-│   ├── openapi-multiple-servers.yaml
-│   ├── openapi-auth-and-errors.yaml
-│   └── expected-preview.txt
-└── tests/
-    ├── fixtures/
-    └── test_validate_collection.py
+└── CHANGELOG.md                # User-visible changes by release
 ```
 
 Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-specific reference material in `references/` and point to it from `SKILL.md` exactly where the agent needs it. Keep examples small and representative; avoid duplicating rules across README, skill, and references.
@@ -183,10 +173,11 @@ Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-spe
 
 **Acceptance criteria:**
 
-- Generated collection JSON parses and conforms to the documented Postman collection format.
+- Generated collection JSON parses and satisfies the validator's documented core v2.1 structural checks; it is not represented as full JSON Schema validation.
 - Validation checks unresolved variables, missing method/URL, duplicate names, and source traceability where possible.
 - Validator makes no network calls and does not execute collection requests.
 - Validation output separates errors, warnings, and informational limits.
+- A representative generated collection fixture is checked against Postman's official v2.1 JSON Schema during release review; actual server behavior is outside the release verification scope.
 
 ### Phase 5 — Examples, documentation, and adversarial review
 

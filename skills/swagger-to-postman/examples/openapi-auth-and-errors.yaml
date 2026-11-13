@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: Example Customer API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid/v1
+tags:
+  - name: Customers
+paths:
+  /customers/{customerId}:
+    get:
+      operationId: getCustomerById
+      summary: Get customer by ID
+      tags: [Customers]
+      parameters:
+        - name: customerId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Customer returned
+          content:
+            application/json:
+              example:
+                id: customer-123
+                name: Example Customer
+        '401':
+          description: Unauthorized
+        '404':
+          description: Customer not found
+        '500':
+          description: Internal server error
+      security:
+        - bearerAuth: []
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
