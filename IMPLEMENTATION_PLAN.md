@@ -117,8 +117,7 @@ swagger-to-postman-skill/
 │       ├── docs/
 │       ├── examples/
 │       ├── references/
-│       ├── scripts/
-│       └── tests/
+│       └── examples/
 ├── README.md                   # English user-facing overview, install/use, examples
 ├── LICENSE                     # MIT license
 └── CHANGELOG.md                # User-visible changes by release
@@ -169,15 +168,15 @@ Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-spe
 
 ### Phase 4 — Generation and validation support
 
-**Work:** Define generation instructions and implement a small local structural validator if the skill runtime can invoke scripts. Keep validation deterministic, offline, and limited to claims it can prove. Pin/document any schema or dependency used.
+**Work:** Define a language-agnostic structural review checklist for the agent. Keep validation offline and limited to claims it can prove. Do not require a local runtime or technology-specific script.
 
 **Acceptance criteria:**
 
-- Generated collection JSON parses and satisfies the validator's documented core v2.1 structural checks; it is not represented as full JSON Schema validation.
-- Validation checks unresolved variables, missing method/URL, duplicate names, and source traceability where possible.
-- Validator makes no network calls and does not execute collection requests.
-- Validation output separates errors, warnings, and informational limits.
-- A representative generated collection fixture is checked against Postman's official v2.1 JSON Schema during release review; actual server behavior is outside the release verification scope.
+- Generated collection JSON parses and satisfies the agent's documented core v2.1 structural review checklist; it is not represented as full JSON Schema validation.
+- Review checks unresolved variables, missing method/URL, duplicate names, scenario labels, and source traceability where possible.
+- Review does not require a local runtime, make network calls, or execute collection requests.
+- The completion report separates errors, warnings, and informational limits.
+- A representative collection fixture is checked against Postman's official v2.1 JSON Schema during release review; actual server behavior is outside the release verification scope.
 
 ### Phase 5 — Examples, documentation, and adversarial review
 
@@ -207,7 +206,7 @@ Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-spe
 ## Verification strategy
 
 - Validate the skill package metadata and referenced files.
-- Run the local collection validator against valid and invalid fixtures.
+- Review the representative collection fixture and an invalid example against the structural checklist.
 - Check preview snapshots for deterministic ordering and clear scenario labels.
 - Manually walk through at least one case with a single server, one with multiple servers, and one with 200/401/404/500 responses.
 - Confirm the approval gate by checking that no final collection artifact is written before preview approval.

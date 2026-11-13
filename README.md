@@ -9,7 +9,7 @@ An open Agent Skill that helps an AI agent turn a Swagger/OpenAPI description in
 - Helps choose collection variables, Postman environments, servers, authentication, and test coverage.
 - Distinguishes executable request scenarios from response examples that cannot be triggered reliably.
 - Keeps secrets out of generated files and reports unsupported or ambiguous input.
-- Provides an offline structural validator for Postman Collection v2.1 JSON.
+- Guides the agent through an offline structural review of the generated Postman collection.
 
 The skill does not call the API described by the specification. A generated request can have side effects when a person later runs it in Postman; review requests and target environments before execution.
 
@@ -29,15 +29,9 @@ Ask your compatible AI agent to create a Postman collection from a Swagger/OpenA
 
 See [the workflow guide](skills/swagger-to-postman/docs/WORKFLOW.md) and [the examples](skills/swagger-to-postman/docs/EXAMPLES.md) for the interaction contract and tree conventions.
 
-## Validate a collection
+## Validation
 
-Python 3.10+ is required. The validator uses only the Python standard library and makes no network calls.
-
-```powershell
-python skills/swagger-to-postman/scripts/validate_collection.py path\to\collection.json
-```
-
-It checks JSON syntax and core v2.1 structure, request method/URL, duplicate sibling names, and reports variables used in request definitions that are not declared at collection scope (they may be supplied by an environment). Scenario labels and source traceability are part of the skill's manual review, not checks performed by this script. It is a structural validator, not a substitute for importing the collection into Postman or running requests.
+The agent reviews the generated JSON for valid syntax, required collection structure, request methods and URLs, duplicate sibling names, unresolved variables, scenario labels, and source traceability. This uses the agent's available capabilities and does not require a specific programming language or runtime. It does not validate live API behavior or execute requests. Import the result into Postman for an additional compatibility check.
 
 ## Supported features and limitations
 

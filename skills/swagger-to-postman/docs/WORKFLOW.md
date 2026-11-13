@@ -40,4 +40,4 @@ The preview is complete only if it shows every supported operation and every pro
 
 ## Completion report
 
-Report artifact paths and count totals. Separate validator errors, warnings, and informational notes. State which formats/constructs were not validated. Include any excluded operation with its reason. Never say “tested against the API” unless a separate, explicitly authorized live test was actually run; this skill itself never runs requests.
+Report artifact paths and count totals. Separate structural errors, warnings, and informational notes found during agent review. State which formats/constructs were not validated. Include any excluded operation with its reason. Never say “tested against the API” unless a separate, explicitly authorized live test was actually run; this skill itself never runs requests.
