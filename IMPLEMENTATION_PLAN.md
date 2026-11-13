@@ -177,7 +177,7 @@ Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-spe
 - Validation checks unresolved variables, missing method/URL, duplicate names, and source traceability where possible.
 - Validator makes no network calls and does not execute collection requests.
 - Validation output separates errors, warnings, and informational limits.
-- The generated file is manually checked for Postman import compatibility during release review.
+- A representative generated collection fixture is checked against Postman's official v2.1 JSON Schema during release review; actual server behavior is outside the release verification scope.
 
 ### Phase 5 — Examples, documentation, and adversarial review
 

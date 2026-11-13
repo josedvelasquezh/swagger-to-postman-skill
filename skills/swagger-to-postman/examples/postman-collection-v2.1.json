@@ -1,0 +1,73 @@
+{
+  "info": {
+    "name": "Customer API Example",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Customers",
+      "item": [
+        {
+          "name": "Get customer by ID",
+          "item": [
+            {
+              "name": "200 — Customer returned",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{baseUrl}}/customers/{{customerId}}",
+                "description": "Source: GET /customers/{customerId}; operationId: getCustomerById"
+              },
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test('returns documented status', function () {",
+                      "  pm.response.to.have.status(200);",
+                      "});"
+                    ]
+                  }
+                }
+              ],
+              "response": [
+                {
+                  "name": "200 — Customer returned (example)",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": "{{baseUrl}}/customers/{{customerId}}"
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\"id\":\"customer-123\",\"name\":\"Example Customer\"}"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.example.invalid/v1",
+      "type": "string"
+    },
+    {
+      "key": "customerId",
+      "value": "customer-123",
+      "type": "string"
+    }
+  ]
+}
