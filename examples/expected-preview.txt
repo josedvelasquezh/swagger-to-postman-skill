@@ -1,0 +1,6 @@
+Customers
+└── Get customer by ID [GET /customers/{customerId}]
+    ├── 200 — Customer returned [request; status test if selected]
+    ├── 401 — Unauthorized [example unless auth-negative input is approved]
+    ├── 404 — Customer not found [example; no missing-ID trigger defined]
+    └── 500 — Internal server error [example; no safe deterministic trigger]
