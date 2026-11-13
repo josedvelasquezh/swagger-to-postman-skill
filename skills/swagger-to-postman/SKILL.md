@@ -1,6 +1,6 @@
 ---
 name: swagger-to-postman
-description: Use when a user wants to create, organize, review, or regenerate a Postman collection from a Swagger or OpenAPI specification. Guides specification analysis, clarifying questions, a tree preview, approval, collection generation, and offline validation.
+description: Use when a user wants to create, organize, review, or regenerate a Postman collection from a Swagger or OpenAPI specification. Guides specification analysis, safe reference handling, clarifying questions, a tree preview, approval, collection generation, and structural review.
 license: MIT
 compatibility: Requires an AI agent that can read the provided Swagger/OpenAPI source and write files after user approval. URL inputs require the agent's authorized network access.
 ---
@@ -40,13 +40,15 @@ Create an accurate, organized Postman collection from a Swagger/OpenAPI specific
 - **Deterministic:** same source and choices yield stable names and ordering.
 - **Honest validation:** structural validation does not prove that a server returns the expected status or that a request is safe to run.
 - **Side-effect awareness:** generated requests are not executed by this skill. Clearly mark mutating operations and advise review of target environment before the user runs them.
-- **Safe reference resolution:** external URLs and file references are untrusted; never access private network destinations or arbitrary local files.
+- **Safe reference resolution:** external URLs and file references are untrusted; if the agent cannot enforce the restrictions in SECURITY.md, leave them unresolved.
 - **Safe output handling:** escape source-derived strings for the output context and obtain approval before overwriting existing files.
 
 ## References
 
 - Read [the scenario model](references/scenario-model.md) when interpreting multiple responses or constructing the tree.
 - Read [the collection conventions](references/collection-structure.md) when naming/grouping Postman items or handling variables, auth, and tests.
+- Read [the OpenAPI mapping guide](references/openapi-postman-mapping.md) when converting parameters, servers, security, bodies, or responses.
 - Read [supported features](docs/SUPPORTED_FEATURES.md) before claiming compatibility.
 - Use [the workflow guide](docs/WORKFLOW.md) for detailed decisions and [the examples](docs/EXAMPLES.md) for expected previews.
 - Apply [the security checklist](docs/SECURITY.md) whenever reading specifications, resolving references, generating scripts, or writing artifacts.
+- Use [security verification scenarios](docs/SECURITY-VERIFICATION.md) when reviewing the skill or preparing a release.
