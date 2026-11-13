@@ -116,8 +116,7 @@ swagger-to-postman-skill/
 │       ├── SKILL.md            # Main instructions and workflow
 │       ├── docs/
 │       ├── examples/
-│       ├── references/
-│       └── examples/
+│       └── references/
 ├── README.md                   # English user-facing overview, install/use, examples
 ├── LICENSE                     # MIT license
 └── CHANGELOG.md                # User-visible changes by release
@@ -233,4 +232,4 @@ Keep `SKILL.md` focused on the ordered workflow and golden rules. Put branch-spe
 
 ## Definition of done
 
-The first release is done when the public MIT-licensed repository on `main` contains a usable English Agent Skill, clear documentation and examples, a reviewed preview/approval workflow, documented support limits, and repeatable offline validation; the `develop` history shows organized English commits, and the skill never silently invents behavior or leaks secrets.
+The release is ready when the public MIT-licensed repository on `main` contains a usable English Agent Skill, precise mapping rules, security guidance and adversarial examples, a reviewed preview/approval workflow, documented support limits, and a completed release checklist; the `develop` history shows organized English commits, and the skill never silently invents behavior or leaks secrets.

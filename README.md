@@ -1,6 +1,6 @@
 # Swagger to Postman Skill
 
-An open Agent Skill that helps an AI agent turn a Swagger/OpenAPI description into a reviewable Postman collection. It inventories the API, asks only for unresolved choices, previews the proposed collection as a tree, waits for approval, and validates the generated JSON.
+An open Agent Skill that helps an AI agent turn a Swagger/OpenAPI description into a reviewable Postman collection. It inventories the API, asks only for unresolved choices, previews the proposed collection as a tree, waits for approval, and reviews the generated JSON.
 
 ## What it does
 
@@ -25,9 +25,11 @@ Ask your compatible AI agent to create a Postman collection from a Swagger/OpenA
 2. Ask about choices the specification cannot resolve.
 3. Show the complete folder/request tree, including scenario type, planned variables/tests, and warnings.
 4. Wait for your explicit approval before creating collection or environment files.
-5. Validate generated collection JSON and summarize assumptions and limitations.
+5. Review generated collection JSON and summarize assumptions and limitations.
 
 See [the workflow guide](skills/swagger-to-postman/docs/WORKFLOW.md) and [the examples](skills/swagger-to-postman/docs/EXAMPLES.md) for the interaction contract and tree conventions.
+Security boundaries are documented in the [security checklist](skills/swagger-to-postman/docs/SECURITY.md). Detailed conversion rules are in the [OpenAPI mapping guide](skills/swagger-to-postman/references/openapi-postman-mapping.md).
+Manual security acceptance scenarios are listed in [SECURITY-VERIFICATION.md](skills/swagger-to-postman/docs/SECURITY-VERIFICATION.md).
 
 ## Validation
 

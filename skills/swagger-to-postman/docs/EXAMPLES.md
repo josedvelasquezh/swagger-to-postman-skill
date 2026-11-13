@@ -40,3 +40,4 @@ If the user changes from “all response cases” to “only 2xx status assertio
 - [`openapi-unsupported-construct.yaml`](../examples/openapi-unsupported-construct.yaml): callback and vendor extension; report limits rather than silently omitting behavior.
 - [`openapi-auth-and-errors.yaml`](../examples/openapi-auth-and-errors.yaml): auth and multiple responses; expected tree is recorded in [`expected-preview.txt`](../examples/expected-preview.txt).
 - [`postman-collection-v2.1.json`](../examples/postman-collection-v2.1.json): representative collection with a request, a test, variables, and a saved response example.
+- `security-*.yaml`: hostile descriptions, unsafe external/local references, and sensitive examples; expected handling is specified in [the security verification matrix](SECURITY-VERIFICATION.md).
