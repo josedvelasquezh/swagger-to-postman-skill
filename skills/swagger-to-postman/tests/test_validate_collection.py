@@ -1,6 +1,9 @@
 import unittest
+import sys
+from pathlib import Path
 
-from scripts.validate_collection import SCHEMA_URI, validate_collection
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
+from validate_collection import SCHEMA_URI, validate_collection
 
 
 def collection(items=None, variables=None):

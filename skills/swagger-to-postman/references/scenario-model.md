@@ -9,6 +9,8 @@ Represent each response case as one of:
 - **Request scenario:** an independently executable Postman request with known inputs and an expected status grounded in the specification or explicitly approved by the user. Running it may have side effects.
 - **Response example:** documentation associated with an operation, using a source-provided response example/schema. It is not a runnable assertion and must be labeled as such.
 
+When a source response example has a concrete payload, attach it as a saved Postman response example to the corresponding request when the selected format supports it. A saved response example documents the response; it does not cause the request to return that status. If there is no concrete payload, retain the status and description in the preview and report rather than fabricate a body.
+
 If Postman cannot represent the desired documentation case as a non-runnable item in the chosen collection structure, keep it in the preview/report and do not create a misleading request. Explain the limitation.
 
 ## Tree convention

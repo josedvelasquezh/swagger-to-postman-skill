@@ -15,7 +15,7 @@ The skill does not call the API described by the specification. A generated requ
 
 ## Install
 
-Copy this repository's `SKILL.md` and its sibling `scripts/` and `references/` directories into a supported agent's skills directory, preserving their relative paths. Agent skill installation paths differ by product; follow the target agent's official instructions.
+Copy [`skills/swagger-to-postman/`](skills/swagger-to-postman/) into a supported agent's skills directory, preserving its name and internal paths. Agent skill installation paths differ by product; follow the target agent's official instructions.
 
 ## Use
 
@@ -27,21 +27,21 @@ Ask your compatible AI agent to create a Postman collection from a Swagger/OpenA
 4. Wait for your explicit approval before creating collection or environment files.
 5. Validate generated collection JSON and summarize assumptions and limitations.
 
-See [the workflow guide](docs/WORKFLOW.md) and [the examples](docs/EXAMPLES.md) for the interaction contract and tree conventions.
+See [the workflow guide](skills/swagger-to-postman/docs/WORKFLOW.md) and [the examples](skills/swagger-to-postman/docs/EXAMPLES.md) for the interaction contract and tree conventions.
 
 ## Validate a collection
 
 Python 3.10+ is required. The validator uses only the Python standard library and makes no network calls.
 
 ```powershell
-python scripts/validate_collection.py path\to\collection.json
+python skills/swagger-to-postman/scripts/validate_collection.py path\to\collection.json
 ```
 
 It checks JSON syntax and core v2.1 structure, request method/URL, duplicate sibling names, and reports variables used in request definitions that are not declared at collection scope (they may be supplied by an environment). Scenario labels and source traceability are part of the skill's manual review, not checks performed by this script. It is a structural validator, not a substitute for importing the collection into Postman or running requests.
 
 ## Supported features and limitations
 
-See [SUPPORTED_FEATURES.md](docs/SUPPORTED_FEATURES.md). The first release targets Swagger 2.0 and OpenAPI 3.x. Vendor extensions and unsupported constructs must be reported. Documented `401`, `404`, or `500` responses do not automatically imply a request that will produce them; the skill must label examples separately from executable scenarios.
+See [SUPPORTED_FEATURES.md](skills/swagger-to-postman/docs/SUPPORTED_FEATURES.md). The first release targets Swagger 2.0 and OpenAPI 3.x. Vendor extensions and unsupported constructs must be reported. Documented `401`, `404`, or `500` responses do not automatically imply a request that will produce them; the skill must label examples separately from executable scenarios.
 
 ## License
 
