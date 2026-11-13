@@ -29,7 +29,7 @@ Operations without tags go in `Other`. Preserve multiple tags only if that does 
 - Follow the source security requirement and scope it at collection/folder/request level only when this accurately represents the specification.
 - Use variable references for API keys, bearer tokens, and credentials; never populate secret values.
 - Add tests only when requested. Status assertions must correspond to the chosen executable scenario. Response-body assertions need source-defined examples or schema-grounded expectations.
-- Do not create pre-request scripts that fetch tokens or mutate external state unless the user explicitly asks and provides a safe design.
+- Do not create pre-request scripts that fetch tokens, call external services, access files, or mutate state. Keep generated scripts to visible, source-grounded `pm.test` assertions.
 
 ## Traceability and descriptions
 

@@ -1,0 +1,14 @@
+openapi: 3.0.3
+info:
+  title: Unsafe Remote Reference Fixture
+  version: 1.0.0
+paths:
+  /items:
+    get:
+      responses:
+        '200':
+          description: Items returned
+          content:
+            application/json:
+              schema:
+                $ref: http://127.0.0.1:8080/private-schema.json
