@@ -1,0 +1,23 @@
+openapi: 3.0.3
+info:
+  title: Example Untagged API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid
+paths:
+  /submit:
+    post:
+      summary: Submit data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [value]
+              properties:
+                value:
+                  type: string
+      responses:
+        '202':
+          description: Request accepted

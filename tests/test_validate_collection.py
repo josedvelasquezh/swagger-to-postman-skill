@@ -48,6 +48,22 @@ class ValidateCollectionTests(unittest.TestCase):
         self.assertEqual(errors, [])
         self.assertTrue(any("supplied by an environment" in warning for warning in warnings))
 
+    def test_reports_variables_in_request_body(self):
+        data = collection(
+            [
+                {
+                    "name": "Create",
+                    "request": {
+                        "method": "POST",
+                        "url": "https://api.example.invalid/items",
+                        "body": {"mode": "raw", "raw": '{"id":"{{recordId}}"}'},
+                    },
+                }
+            ]
+        )
+        _, warnings = validate_collection(data)
+        self.assertTrue(any("recordId" in warning for warning in warnings))
+
     def test_rejects_wrong_schema_uri(self):
         data = collection()
         data["info"]["schema"] = "https://example.invalid/schema"

@@ -37,7 +37,7 @@ Python 3.10+ is required. The validator uses only the Python standard library an
 python scripts/validate_collection.py path\to\collection.json
 ```
 
-It checks JSON syntax and core v2.1 structure, request method/URL, duplicate sibling names, unresolved Postman variables, and scenario labels. It is a structural validator, not a substitute for importing the collection into Postman or running requests.
+It checks JSON syntax and core v2.1 structure, request method/URL, duplicate sibling names, and reports variables used in request definitions that are not declared at collection scope (they may be supplied by an environment). Scenario labels and source traceability are part of the skill's manual review, not checks performed by this script. It is a structural validator, not a substitute for importing the collection into Postman or running requests.
 
 ## Supported features and limitations
 

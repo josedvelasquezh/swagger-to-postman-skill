@@ -88,12 +88,26 @@ def validate_collection(data: Any) -> tuple[list[str], list[str]]:
                 if not url_text.strip():
                     errors.append(f"{item_location}.request.url must contain a URL or URL object.")
                 else:
-                    for variable_name in VARIABLE_PATTERN.findall(url_text):
-                        if variable_name not in declared_variables:
-                            warnings.append(
-                                f"{item_location} uses {{{{{variable_name}}}}}, which is not declared "
-                                "at collection scope; confirm it is supplied by an environment."
-                            )
+                    def string_values(value: Any):
+                        if isinstance(value, str):
+                            yield value
+                        elif isinstance(value, dict):
+                            for nested_value in value.values():
+                                yield from string_values(nested_value)
+                        elif isinstance(value, list):
+                            for nested_value in value:
+                                yield from string_values(nested_value)
+
+                    used_variables = {
+                        variable_name
+                        for text in string_values(request)
+                        for variable_name in VARIABLE_PATTERN.findall(text)
+                    }
+                    for variable_name in sorted(used_variables - declared_variables):
+                        warnings.append(
+                            f"{item_location} uses {{{{{variable_name}}}}}, which is not declared "
+                            "at collection scope; confirm it is supplied by an environment."
+                        )
             elif "item" in item:
                 children = item["item"]
                 if not isinstance(children, list):

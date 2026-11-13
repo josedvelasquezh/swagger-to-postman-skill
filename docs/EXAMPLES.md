@@ -30,3 +30,12 @@ If operations use different hosts, show which operations map to each host. Ask w
 ## Preview changes
 
 If the user changes from “all response cases” to “only 2xx status assertions,” update counts and tree, explain which error examples are excluded, and request approval for the updated preview before writing files.
+
+## Fixture index
+
+- [`openapi-basic.yaml`](../examples/openapi-basic.yaml): one tagged operation with a source example.
+- [`openapi-multiple-servers.yaml`](../examples/openapi-multiple-servers.yaml): root and operation-level server choices.
+- [`openapi-missing-tags-examples.yaml`](../examples/openapi-missing-tags-examples.yaml): untagged operation without a request/response example; expected to use `Other` and ask before inventing payloads.
+- [`openapi-external-reference.yaml`](../examples/openapi-external-reference.yaml): external schema reference; report unresolved reference when the referenced file is unavailable.
+- [`openapi-unsupported-construct.yaml`](../examples/openapi-unsupported-construct.yaml): callback and vendor extension; report limits rather than silently omitting behavior.
+- [`openapi-auth-and-errors.yaml`](../examples/openapi-auth-and-errors.yaml): auth and multiple responses; expected tree is recorded in [`expected-preview.txt`](../examples/expected-preview.txt).

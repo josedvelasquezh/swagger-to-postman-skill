@@ -1,0 +1,19 @@
+openapi: 3.0.3
+info:
+  title: Example External Reference API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid
+paths:
+  /records:
+    post:
+      operationId: createRecord
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ./schemas/record.yaml
+      responses:
+        '201':
+          description: Record created

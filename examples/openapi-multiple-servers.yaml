@@ -1,0 +1,20 @@
+openapi: 3.0.3
+info:
+  title: Example Multi-Server API
+  version: 1.0.0
+servers:
+  - url: https://api.example.invalid/v1
+    description: Public API
+  - url: https://partner.example.invalid/v1
+    description: Partner API
+paths:
+  /health:
+    get:
+      operationId: getHealth
+      summary: Get service health
+      servers:
+        - url: https://status.example.invalid
+          description: Status host override
+      responses:
+        '200':
+          description: Service is available
