@@ -28,6 +28,7 @@ Ask your compatible AI agent to create a Postman collection from a Swagger/OpenA
 5. Validate generated collection JSON and summarize assumptions and limitations.
 
 See [the workflow guide](skills/swagger-to-postman/docs/WORKFLOW.md) and [the examples](skills/swagger-to-postman/docs/EXAMPLES.md) for the interaction contract and tree conventions.
+Security boundaries are documented in the [security checklist](skills/swagger-to-postman/docs/SECURITY.md).
 
 ## Validation
 
